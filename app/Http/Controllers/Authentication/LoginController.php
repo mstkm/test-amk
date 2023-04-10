@@ -20,9 +20,9 @@ class LoginController extends Controller
         'password' => 'required'
       ]);
 
-      $user = User::select('*')->where('email', $request->email)->get()[0];
+      $user = User::select('*')->where('email', $request->email)->get();
 
-      if ($user->verified == 0) {
+      if ($user[0]->verified == 0) {
         return back()->with('loginError', 'Email belum terverifikasi oleh admin. Mohon tunggu!');
       }
 
