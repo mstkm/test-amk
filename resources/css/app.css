@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.btn {
+  text-transform: none;
+  width: 100%;
+}
+
+.btn-main {
+  @apply bg-blue-500 border-0 hover:bg-blue-600 active:bg-blue-800 text-base;
+}
+.btn-profile {
+  @apply bg-blue-500 border-white hover:border-white hover:bg-white active:bg-blue-800 text-base;
+}
+
+.font-primary {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input {
+  width: auto;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.table th:first-child {
+  position: relative;
+  left: 0px;
+  z-index: 0;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
