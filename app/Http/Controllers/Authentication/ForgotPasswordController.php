@@ -49,7 +49,7 @@ class ForgotPasswordController extends Controller
     );
 
     return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', 'Password berhasil diperbaharui.Coba login kembali!')
+                ? redirect()->route('login')->with('success', 'Password berhasil diperbaharui.Coba login kembali!')
                 : back()->withErrors(['email' => 'Gagal!']);
   }
 }
