@@ -35,9 +35,15 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/registration', [RegistrationController::class, 'index'])->name('registration')->middleware('guest');
 Route::post('/registration', [RegistrationController::class, 'register'])->name('registration-action');
 
-// Reset Password
-Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password')->middleware('guest');
-Route::get('/reset-password', [ResetPasswordController::class, 'index'])->name('reset-password')->middleware('guest');
+// Forgot / Reset Password
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'requestLink'])->name('request-link');
+
+Route::get('/reset-password/{token}', function (string $token) {
+  return view('authentication.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');

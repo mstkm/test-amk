@@ -20,16 +20,19 @@ class LoginController extends Controller
         'password' => 'required'
       ]);
 
-      $user = User::select('*')->where('email', $request->email)->get();
+      $user = User::where('email', $request->email)->get();
 
-      if ($user[0]->verified == 0) {
-        return back()->with('loginError', 'Email belum terverifikasi oleh admin. Mohon tunggu!');
+      if ($user->count() > 0) {
+        if ($user[0]->verified == 0) {
+          return back()->with('loginError', 'Email belum terverifikasi oleh Admin. Mohon tunggu!');
+        }
       }
 
       if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
         return redirect()->intended('/dashboard');
       }
+
 
       return back()->with('loginError', 'Wrong username or password');
     }
