@@ -28,6 +28,9 @@ Route::get('/', function () {
 // Login / Logout
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login-action');
+Route::get('/logout', function() {
+  return view('not-found');
+});
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // Registration
@@ -37,12 +40,13 @@ Route::post('/registration', [RegistrationController::class, 'register'])->name(
 // Forgot / Reset Password
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'requestLink'])->name('request-link');
-
 Route::get('/reset-password/{token}', function (string $token) {
   return view('authentication.reset-password', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
-
 Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
+Route::get('/reset-password', function() {
+  return view('not-found');
+});
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
