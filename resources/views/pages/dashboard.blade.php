@@ -3,7 +3,7 @@
 @section('title', 'AMK | Dashboard')
 
 @section('content')
-  <div class="pt-5 pb-10  h-screen overflow-auto w-full">
+  <div class="pt-5 pb-10 px-5 h-screen overflow-auto w-full">
     <h1 class="text-3xl font-bold mb-10">Dasboard</h1>
     <div class="flex gap-8 flex-wrap mb-10">
       <div class="p-5 bg-green-500 rounded h-52 w-52 flex flex-col">
