@@ -18,7 +18,7 @@ class RegistrationController extends Controller
       $dataValidate = $request->validate([
         'name' => 'required|max:25',
         'email' => 'required|email:dns|unique:users,email',
-        'password' => ['required', Password::min(6)->letters()->mixedCase()->numbers()->symbols()]
+        'password' => ['required', 'confirmed', Password::min(6)->letters()->mixedCase()->numbers()->symbols()]
       ]);
 
       $dataValidate['password'] = Hash::make($dataValidate['password']);
