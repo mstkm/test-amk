@@ -69,11 +69,4 @@
       </table>
     </div>
   </div>
-
-  <script>
-    const showModal = () => {
-      document.getElementById('modal-verified').style.display = 'flex'
-    }
-  </script>
-
 @endsection
