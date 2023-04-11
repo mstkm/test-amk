@@ -62,6 +62,37 @@
               <p class="text-sm text-red-800">{{ $message }}</p>
             @enderror
           </div>
+          <!-- Subtotal -->
+          <div class="form-control w-full max-w-lg mb-3">
+            <label class="label">
+              <span class="label-text text-base">Subtotal (Rp)</span>
+            </label>
+            <input name="" id="" type="number" placeholder="Type subtotal" class="input input-bordered w-full max-w-lg focus:outline-none text-base @error('subtotal') border-red-800 @enderror" value="{{ old('subtotal', $order->subtotal) }}" disabled />
+            <input name="subtotal" id="subtotal" type="number" placeholder="Type subtotal" class="input input-bordered w-full max-w-lg focus:outline-none text-base @error('subtotal') border-red-800 @enderror" value="{{ old('subtotal', $order->subtotal) }}" hidden />
+            @error('subtotal')
+              <p class="text-sm text-red-800">{{ $message }}</p>
+            @enderror
+          </div>
+          <!-- Discount -->
+          <div class="form-control w-full max-w-lg mb-3">
+            <label class="label">
+              <span class="label-text text-base">Discount (%)</span>
+            </label>
+            <input name="discount" id="discount" type="number" placeholder="Type discount" class="input input-bordered w-full max-w-lg focus:outline-none text-base @error('discount') border-red-800 @enderror" value="{{ old('discount', $order->discount) }}" />
+            @error('discount')
+              <p class="text-sm text-red-800">{{ $message }}</p>
+            @enderror
+          </div>
+          <!-- Total -->
+          <div class="form-control w-full max-w-lg mb-3">
+            <label class="label">
+              <span class="label-text text-base">Total (Rp)</span>
+            </label>
+            <input name="total" id="total" type="number" placeholder="Type total" class="input input-bordered w-full max-w-lg focus:outline-none text-base @error('total') border-red-800 @enderror" value="{{ old('total') }}" />
+            @error('total')
+              <p class="text-sm text-red-800">{{ $message }}</p>
+            @enderror
+          </div>
         </div>
         <div class="w-fit mt-8">
           <button type="submit" class="btn btn-main">Submit</button>
@@ -79,5 +110,16 @@
 
       address.value = customer.address
     }
+
+    if (discount.value == {{ Js::from($order->discount) }}) {
+      const totalValue = subtotal.value - (subtotal.value*{{ Js::from($order->discount) }}/100)
+      total.value = totalValue
+    }
+
+    discount.addEventListener('change', () => {
+      const totalValue = subtotal.value - (subtotal.value*discount.value/100)
+
+      total.value = totalValue
+    })
   </script>
 @endsection

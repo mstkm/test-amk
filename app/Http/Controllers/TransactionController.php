@@ -179,9 +179,9 @@ class TransactionController extends Controller
         'date' => 'required|date',
         'customer_id' => 'required|exists:customers,id',
         'address' => 'required',
-        'subtotal' => 'nullable',
-        'discount' => 'nullable',
-        'total' => 'nullable'
+        'subtotal' => 'required',
+        'discount' => 'required',
+        'total' => 'required'
       ]);
 
       $order = Order::findOrFail($id);
