@@ -22,7 +22,7 @@
         <label class="label">
           <span class="label-text text-base">Price</span>
         </label>
-        <input name="price" id="price" type="number" placeholder="Type price" class="input input-bordered w-full max-w-lg focus:outline-none text-base @error('name') border border-red-800 @enderror" value="{{ old('price', $item->price) }}" />
+        <input name="price" id="price" type="number" placeholder="Type price" class="input input-bordered w-full max-w-lg focus:outline-none text-base @error('price') border border-red-800 @enderror" value="{{ old('price', $item->price) }}" />
         @error('price')
           <p class="text-sm text-red-800">{{ $message }}</p>
         @enderror
@@ -31,7 +31,7 @@
         <label class="label">
           <span class="label-text text-base">Description</span>
         </label>
-        <textarea name="description" id="description" class="textarea textarea-bordered h-24 w-full max-w-lg focus:outline-none text-base @error('name') border border-red-800 @enderror" placeholder="Type description">{{ old('description', $item->description) }}</textarea>
+        <textarea name="description" id="description" class="textarea textarea-bordered h-24 w-full max-w-lg focus:outline-none text-base @error('description') border border-red-800 @enderror" placeholder="Type description">{{ old('description', $item->description) }}</textarea>
         @error('description')
           <p class="text-sm text-red-800">{{ $message }}</p>
         @enderror

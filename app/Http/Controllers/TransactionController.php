@@ -9,6 +9,7 @@ use App\Models\OrderItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class TransactionController extends Controller
 {
@@ -174,7 +175,7 @@ class TransactionController extends Controller
     // Edit order
     public function editOrder(Request $request, string $id) {
       $validateData = $request->validate([
-        'code' => 'required',
+        'code' => ['required', Rule::unique('orders')->ignore($id)],
         'date' => 'required|date',
         'customer_id' => 'required|exists:customers,id',
         'address' => 'required',

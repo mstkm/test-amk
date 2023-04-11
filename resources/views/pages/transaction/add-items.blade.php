@@ -142,7 +142,7 @@
               <td>{{ $order_item->item->name }}</td>
               <td>{{ $order_item->qty }}</td>
               <td>Rp{{ number_format($order_item->price, '2', ',', '.') }}</td>
-              <td>{{ $order_item->discount }}</td>
+              <td>{{ $order_item->discount }}%</td>
               @if ($order_item->note)
                 <td>{{ $order_item->note }}</td>
               @else
@@ -163,7 +163,7 @@
             @csrf
             @method('put')
             <tr>
-              <td colspan="5" class="text-base font-bold">Masukkan Discount</td>
+              <td colspan="5" class="text-base font-bold">Masukkan Discount (%)</td>
               <td>
                 <div class="w-24">
                   <!-- Order Subtotal -->

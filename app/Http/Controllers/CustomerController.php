@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class CustomerController extends Controller
 {
@@ -91,7 +92,7 @@ class CustomerController extends Controller
       $validateData = $request->validate([
         'name' => 'required',
         'address' => 'required',
-        'phone' => ['required', 'regex:/^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$/']
+        'phone' => ['required', 'regex:/^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$/', Rule::unique('customers')->ignore($id)]
       ]);
 
       $customer = Customer::findOrFail($id);

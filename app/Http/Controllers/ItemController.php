@@ -6,6 +6,7 @@ use App\Models\Item;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class ItemController extends Controller
 {
@@ -90,7 +91,7 @@ class ItemController extends Controller
     public function update(Request $request, string $id)
     {
       $validateData = $request->validate([
-        'name' => 'required',
+        'name' => ['required', Rule::unique('items')->ignore($id)],
         'price' => 'required|numeric',
         'description' => 'required'
       ]);
