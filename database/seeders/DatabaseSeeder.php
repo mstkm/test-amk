@@ -31,14 +31,6 @@ class DatabaseSeeder extends Seeder
             'verified' => true,
             'email_verified_at' => date(now())
         ]);
-        \App\Models\User::factory()->create([
-            'name' => 'Akun Staff',
-            'role' => 'Staff',
-            'email' => 'staff@mail.com',
-            'password' => Hash::make('Staff123?'),
-            'verified' => true,
-            'email_verified_at' => date(now())
-        ]);
 
         // Customers
         Customer::factory(15)->create();
