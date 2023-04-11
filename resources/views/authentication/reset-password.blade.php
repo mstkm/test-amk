@@ -5,7 +5,7 @@
 @section('content')
   <div class="font-primary flex flex-col items-center justify-center h-screen">
     <h1 class="text-5xl mb-5">AMK</h1>
-    <form action="/reset-password" method="post" class="w-1/4 mb-5 flex flex-col justify-center items-center">
+    <form action="/reset-password" method="post" class="w-3/4 md:w-2/4 lg:w-1/4 mb-5 flex flex-col justify-center items-center">
       @csrf
       @if(session()->has('success'))
         <p class="text-base text-green-800">{{ session('status') }}</p>

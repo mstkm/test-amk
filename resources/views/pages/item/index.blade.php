@@ -67,7 +67,7 @@
           @forelse ($items as $item )
             <tr>
               <td class="text-base align-top">{{ $item->name }}</td>
-              <td class="text-base align-top">{{ $item->price }}</td>
+              <td class="text-base align-top">Rp{{ number_format($item->price, '2', ',', '.') }}</td>
               <td class="text-base whitespace-normal align-top">{{ $item->description }}</td>
               <td class="text-base align-top">
                 <a href="{{ route('item.show', $item->id) }}" class="btn btn-outline btn-info"><x-feathericon-eye /></a>

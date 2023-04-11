@@ -5,7 +5,7 @@
 @section('content')
   <div class="font-primary flex flex-col items-center justify-center h-screen">
     <h1 class="text-5xl mb-5">AMK</h1>
-    <form action="{{ route('login-action') }}" method="post" class="w-1/4 mb-5 flex flex-col justify-center items-center">
+    <form action="{{ route('login-action') }}" method="post" class="w-3/4 md:w-2/4 lg:w-1/4 mb-5 flex flex-col justify-center items-center">
       @csrf
       @if (session('success'))
         <div class="alert alert-success shadow-lg my-3">
