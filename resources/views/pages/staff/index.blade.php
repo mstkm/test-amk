@@ -30,7 +30,33 @@
                 </div>
               @else
               <div class="w-12">
-                <div class="btn btn-circle btn-error text-white" onclick="showModal()"><x-feathericon-alert-circle /></div>
+                <!-- The button to open modal -->
+                <label for="my-modal">
+                  <div class="btn btn-circle btn-error text-white">
+                    <x-feathericon-alert-circle />
+                  </div>
+                </label>
+
+                <!-- Put this part before </body> tag -->
+                <input type="checkbox" id="my-modal" class="modal-toggle" />
+                <div class="modal">
+                  <div class="modal-box">
+                    <div class="bg-white rounded p-5 flex flex-col gap-5 items-center justify-center">
+                      <p class="text-lg font-bold">Verifikasi Staff Ini?</p>
+                      <div class="flex gap-5">
+                        <div>
+                          <label for="my-modal" class="btn btn-error">Kembali!</label>
+                        </div>
+                        <div>
+                          <form action="{{ route('staff.update', $s->id) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <button class="btn btn-main">Verifikasi</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               @endif
@@ -41,24 +67,6 @@
           @endforelse
         </tbody>
       </table>
-    </div>
-  </div>
-  <!-- Modal -->
-  <div id="modal-verified" class="absolute hidden top-0 left-0 w-full bg-black/20 h-screen justify-center items-center">
-    <div class="bg-white rounded p-5 flex flex-col gap-5 items-center justify-center">
-      <p class="text-lg font-bold">Verifikasi Staff Ini?</p>
-      <div class="flex gap-5">
-        <div>
-          <a href="{{ route('staff.index') }}" class="btn btn-error">Kembali</a>
-        </div>
-        <div>
-          <form action="{{ route('staff.update', $s->id) }}" method="post">
-            @csrf
-            @method('put')
-            <button class="btn btn-main">Verifikasi</button>
-          </form>
-        </div>
-      </div>
     </div>
   </div>
 
