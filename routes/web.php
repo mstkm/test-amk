@@ -49,8 +49,8 @@ Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 // Customer
-Route::post('/customer/search', [CustomerController::class, 'search'])->name('search-customer');
-Route::resource('/customer', CustomerController::class);
+Route::post('/customer/search', [CustomerController::class, 'search'])->name('search-customer')->middleware('auth');
+Route::resource('/customer', CustomerController::class)->middleware('auth');
 
 // Item
 Route::post('/item/search', [ItemController::class, 'search'])->name('search-item')->middleware('auth');
