@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Password as Pwd;
 
 class ForgotPasswordController extends Controller
 {
@@ -32,7 +33,7 @@ class ForgotPasswordController extends Controller
     $request->validate([
         'token' => 'required',
         'email' => 'required|email',
-        'password' => ['required', 'confirmed', Password::min(6)->letters()->mixedCase()->numbers()->symbols()]
+        'password' => ['required', 'confirmed', Pwd::min(6)->letters()->mixedCase()->numbers()->symbols()]
     ]);
 
     $status = Password::reset(
