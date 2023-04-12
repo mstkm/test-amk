@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id');
             $table->string('code');
             $table->date('date');
-            $table->foreignId('customer_id');
+            $table->uuid('customer_id');
             $table->string('address');
             $table->integer('subtotal')->nullable();
             $table->integer('discount')->nullable();
