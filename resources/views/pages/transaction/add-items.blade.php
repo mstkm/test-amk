@@ -45,7 +45,7 @@
         <div class="flex flex-wrap wrap gap-3 mb-3">
           <!-- Order Id -->
           <div class="hidden">
-            <input hidden type="number" name="order_id" id="order_id" value="{{ $order->id }}">
+            <input name="order_id" id="order_id" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs " value="{{ $order->id }}" />
           </div>
           <!-- Item -->
           <div class="form-control w-full max-w-xs">

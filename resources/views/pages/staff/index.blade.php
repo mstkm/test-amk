@@ -11,7 +11,6 @@
       <table class="table w-full">
         <thead>
           <tr>
-            <th class="text-base">ID</th>
             <th class="text-base">Name</th>
             <th class="text-base">Email</th>
             <th class="text-base">Verifikasi</th>
@@ -20,7 +19,6 @@
         <tbody>
           @forelse ($staff as $s)
             <tr>
-            <td class="text-base">{{ $s->id }}</td>
             <td class="text-base">{{ $s->name }}</td>
             <td class="text-base">{{ $s->email }}</td>
             <td>
